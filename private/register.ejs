@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register to tongog-app</title>
+    <link rel="stylesheet" href="/css/register.css">
+
+</head>
+<body>
+    <div class="container-register">
+        <div class="form-register">
+            <div class="form-register-topic">Register for start tongog-app😺</div>
+            <form action="/register" method="post" id="registerForm" enctype="multipart/form-data">
+                <div id="step1">
+                    <div class="step-register">Step 1/5 : Enter your email</div>
+                    <input type="email" id="email-input" name="email" placeholder="email" required>
+                    <div id="wrong"></div>
+                    <div class="next-step"><span class="next-step-span-left" onclick="window.location.href='/login'">< Log in</span> <span class="next-step-span-right" onclick="step2()">Next ></span></div>
+                </div>
+                <div id="step2" style="display: none;">
+                    <div class="step-register">Step 2/5 : Enter your username</div>
+                    <input type="text" id="username-input" name="username" placeholder="username" required>
+                    <div id="wrong2"></div>
+                    <div class="next-step"><span class="next-step-span-left" onclick="step1()">< Back</span> <span class="next-step-span-right" onclick="step3()">Next ></span></div>
+                </div>
+                <div id="step3" style="display: none;">
+                    <div class="step-register">Step 3/5 : Enter your password</div>
+                    <input type="password" id="password" oninput="checkStep3()" onchange="checkStep3()" name="password" placeholder="password" required>
+                    <input type="password" id="confirm_password" oninput="checkStep3()" onchange="checkStep3()" name="confirm_password" placeholder="confirm password" style="margin-top: 20px;" required>
+                    <div id="wrong3"></div>
+                    <div class="next-step"><span class="next-step-span-left" onclick="step2()">< Back</span> <span class="next-step-span-right" onclick="step4()">Next ></span></div>
+                </div>
+                <div id="step4" style="display: none;">
+                    <div class="step-register">Step 4/5 : Upload your image profile</div>
+                    <div class="upload-information">You can skip it!</div>
+                    <center>
+                        <div id='preview-img'></div>
+                        <input type='file' accept="image/*" id='upload-img' name="profile-image"/>
+                    </center>
+                    <div id="wrong4"></div>
+                    <div class="next-step"><span class="next-step-span-left" onclick="step3()">< Back</span> <span class="next-step-span-right" onclick="step5()">Next ></span></div>
+                </div>
+                <div id="step5" style="display: none;">
+                    <div class="step-register">Preview your profile !</div>
+                    <div class="grid-review-profile">
+                        <div class="profile-img">
+                            <div id='preview-img2'></div>
+                        </div>
+                        <div class="profile-info">
+                            <div class="profile-info-email" id="email"></div>
+                            <div class="profile-info-username" id="username"></div>
+                        </div>
+                    </div>
+                    <div class="next-step"><span class="next-step-span-left" onclick="step1()">< Edit</span> <span class="next-step-span-right" onclick="document.getElementById('registerForm').submit()">Submit ></span></div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="/js/register.js"></script>
+</body>
+</html>
