@@ -8,6 +8,7 @@ var multer  = require('multer')
 var upload = multer({ dest: 'public/img/user/' })
 
 let MongoClient = require('mongodb').MongoClient;
+const { get } = require('http');
 let connectionString = 'mongodb+srv://tongog-app:iwuUWbOI7U3Dl6Ra@cluster0.qhlux.mongodb.net///tongog-app?retryWrites=true&w=majority'; 
 
 let PORT = process.env.PORT || 8080;
@@ -130,6 +131,11 @@ MongoClient.connect(connectionString, {useUnifiedTopology: true} , function (err
     app.get('/login' , (req,res) => {
         res.status(200);
         res.render(__dirname + '/private/login.ejs');
+    })
+
+    app.get('/test' , (req,res) => {
+        res.status(200);
+        res.render(__dirname + '/private/login/index.ejs');
     })
 
     app.use(function(err, req, res, next){
