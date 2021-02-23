@@ -11,3 +11,277 @@
 body{
     background-color: #202020;
 }
+
+.navigation{
+    padding: 10px;
+    background-color: #272727;
+    height: 40px;
+}
+
+.profile-img{
+   width: 30px;
+   height: 30px; 
+   border-radius: 100%;
+   background-position: center;
+   background-size: cover;
+   background-repeat: no-repeat;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.link{
+    float: left;
+    margin-right: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    font-size: 18px;
+    color: #E59866;
+    cursor: pointer;
+    padding: 0 15px;
+}
+
+.active{
+    color: #F4D03F;
+    cursor: context-menu;
+}
+
+.link:hover{
+    color: #F4D03F;
+    background-color: #e599660e;
+    border-radius: 20px;
+}
+
+.active:hover{
+    background-color: transparent;
+}
+
+.profile{
+    height: 40px;
+    border-radius: 20px;
+    float: right;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    margin-right: 20px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: #e599660e;
+}
+
+.profile:hover{
+    background-color: #e5996634;
+}
+
+.profile:hover .profile-name{
+    color: #F4D03F;
+}
+
+.fas {
+    margin-right: 10px;
+}
+
+.profile-name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    font-size: 18px;
+    color: #E59866;
+}
+
+.post{
+    margin-top: 20px;
+    background-color: #272727;
+    width: 500px;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.post{
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    margin: 20px auto;
+}
+
+.post-img{
+    width: 40px;
+    height: 40px; 
+    border-radius: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.post-click{
+    background-color: #3f3f3f;
+    color: #afafaf;
+    border-radius: 20px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.container-top-post{
+    display: none;
+    /* display: flex; */
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: #0000008a;
+    z-index: 3;
+}
+
+.top-post-topic{
+    text-align: center;
+    font-size: 20px;
+    color: #afafaf;
+}
+
+.post-menu{
+    display: grid;
+    grid-template-columns: 1fr 38px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #afafaf7c;
+}
+
+.post-menu .fas{
+    color: #afafaf;
+    font-size: 18px;
+    padding: 5px;
+    background-color: #7e7e7e33;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.post-menu .fas:hover{
+    background-color: #7e7e7e4d;
+}
+
+.top-post{
+    background-color: #272727;
+    padding: 20px;
+    border-radius: 20px;
+    width: 500px;
+}
+
+.post-click:hover{
+    background-color: #535353;
+}
+
+.private{
+    background-color: #afafaf17; 
+    padding: 1px 10px; 
+    border-radius:10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.private:hover{
+    background-color: #afafaf3f; 
+}
+
+.post-info{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    display: flex;
+    justify-content: left ;
+    align-items: center;
+}
+
+.post-info-name{
+    color: #afafaf;
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+.top-post-img{
+    width: 45px;
+    height: 45px; 
+    border-radius: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.top-post textarea{
+    width: calc(100% - 40px);
+    margin-top: 18px;
+    font-size: 18px;
+    background-color: #afafaf17; 
+    border: transparent;
+    border-radius: 20px;
+    padding: 5px 20px;
+    color: #fff;
+    resize: none;
+}
+
+.top-post textarea:hover{
+    background-color: #afafaf1f;
+}
+
+.top-post textarea:focus{
+    outline: none;   
+}
+
+.button{
+    text-align: center;
+    background-color: #e68f56; 
+    padding: 5px;
+    margin-top: 10px;
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.button:hover{
+    background-color: #eb813b;
+}
+
+@media only screen and (max-width: 600px){
+    .navigation{
+        position: fixed;
+        bottom: 0;
+        width: 100vw;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .link{
+        font-size: 0;
+    }
+
+    .link .fas{
+        font-size: 18px;
+    }
+
+    .profile-name{
+        font-size: 0;
+        display: none;
+    }
+
+    .profile{
+        background-color: transparent;
+        float: left;
+    }
+
+    .post{
+        width: 80vw;
+    }
+
+    .top-post{
+        width: 80vw;
+    }
+    
+}

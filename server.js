@@ -24,13 +24,26 @@ MongoClient.connect(connectionString, {useUnifiedTopology: true} , function (err
     let db = client.db('tongog-app');
      
     app.get('/', (req,res) => {
-        if(!req.session.sessionLoginKey){
+        if(!session.sessionLoginKey){
             // not login
             res.redirect('/login');
         } else {
-            // user login
-            res.status(200);
-            res.render(__dirname + '/private/index.ejs');
+            db.collection('user-database').find({userKey : session.sessionLoginKey}).toArray()
+            .then(result => {
+                if(result == 0){
+                    session.sessionLoginKey = '';
+                    res.redirect('/');
+                } else {
+                    // user login
+                    res.status(200);
+                    console.log(result)
+                    res.render(__dirname + '/private/login/index.ejs' , {data : result});  
+                }
+            })
+            .catch(err => {
+                res.status(500);
+                res.render(__dirname + '/public/500.ejs'); 
+            })       
         }
     })
     
@@ -54,7 +67,7 @@ MongoClient.connect(connectionString, {useUnifiedTopology: true} , function (err
                     .then(result=>{
                         if(result.length == 0){
                             var randomstring = Math.random().toString(36).slice(-14);
-                            let userData = { 'user-key': randomstring, email:req.body.email , username : req.body.username , password: req.body.password};
+                            let userData = { userKey: randomstring, email:req.body.email , username : req.body.username , password: req.body.password};
                             db.collection('user-database').insertOne(userData)
                             .then(result => {
                                 fs.rename('public/img/user/'+req.file.filename,'public/img/user/'+req.body.username+'.jpg', function(err) {
@@ -131,6 +144,28 @@ MongoClient.connect(connectionString, {useUnifiedTopology: true} , function (err
     app.get('/login' , (req,res) => {
         res.status(200);
         res.render(__dirname + '/private/login.ejs');
+    })
+
+    app.post('/login' , (req,res) => {
+        res.status(200);
+        // console.log(req.body);
+        if(req.body.email != '' && req.body.password != ''){
+            db.collection('user-database').find({email : req.body.email , password :req.body.password }).toArray()
+            .then(result => {
+                if(result.length == 0){
+                    console.log('not found'); 
+                } else {
+                    let userData = result[0]['userKey'];
+                    session.sessionLoginKey = userData;
+                    console.log(session.sessionLoginKey);
+                    res.redirect('/'); 
+                }
+            })
+            .catch(err => {
+                res.status(500);
+                res.render(__dirname + '/public/500.ejs'); 
+            })
+        }
     })
 
     app.get('/test' , (req,res) => {

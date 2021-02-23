@@ -10,7 +10,40 @@
 </head>
 <body>
     <div class="navigation">
-       <div class="link">Home</div> 
+       <div class="link active"><i class="fas fa-meteor"></i> Feed</div>
+       <div class="link"><i class="fas fa-people-arrows"></i> Message</div>
+       <div class="link"><i class="fas fa-satellite"></i> My question</div> 
+       <div class="profile">
+           <div class="profile-img" style="background-image: url('/img/user/<%= data[0].username %>.jpg');"></div>
+           <div class="profile-name"><%= data[0].username %></div>
+       </div>
+    </div>
+
+    <div class="container-top-post" id="post-menu">
+        <div class="top-post">
+            <div class="post-menu">
+                <div class="top-post-topic">Create your post</div>
+                <i class="fas fa-times" onclick="document.getElementById('post-menu').style.display='none'"></i>
+            </div> 
+            <div class="post-info">
+                <div class="top-post-img" style="background-image: url('/img/user/<%= data[0].username %>.jpg');"></div>
+                <div class="post-info-name">
+                    <div style="height: fit-content;">
+                        <div><%= data[0].username %></div>
+                        <div class="private"><i class="fas fa-user-friends"></i>Friend only.</div>
+                    </div>
+                </div>
+            </div>
+            <textarea rows="3" placeholder="What do you think?"></textarea>
+            <div class="button">Post</div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="post">
+            <div class="post-img" style="background-image: url('/img/user/<%= data[0].username %>.jpg');"></div>
+            <div class="post-click" onclick="document.getElementById('post-menu').style.display='flex'">What do you think?</div>
+        </div>
     </div>
     
 </body>

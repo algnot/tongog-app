@@ -12,17 +12,30 @@
     <div class="container-register">
         <div class="form-register">
             <div class="form-register-topic">Log in 😺</div>
-            <form action="/register" method="post" id="registerForm">
+            <form action="/login" method="post" id="registerForm">
                 <div class="step-register">Please log in to start app</div>
-                <input type="email" id="email-input" name="email" placeholder="email" required>
-                <input type="password" style="margin-top: 20px;" id="email-input" name="email" placeholder="password" required>
+                <input id="email" type="email" id="email-input" name="email" placeholder="email" required>
+                <input id="password" type="password" style="margin-top: 20px;" id="email-input" name="password" placeholder="password" required>
                 <div id="wrong"></div>
                 <div class="next-step">
                     <span class="next-step-span-left" onclick="window.location.href='/register'">< Register</span> 
-                    <span class="next-step-span-right" onclick="alert('500 error!!')">Log in ></span>
+                    <span class="next-step-span-right" onclick="submit()">Log in ></span>
                 </div>
             </form>
         </div>
     </div>
+    <script>
+        function submit(){
+            if(document.getElementById('email').value == ''){
+                document.getElementById('wrong').innerHTML = 'Please enter your email!'
+                return;
+            } else if(document.getElementById('password').value == ''){
+                document.getElementById('wrong').innerHTML = 'Please enter your password!'
+                return;
+            } else {
+                document.getElementById('registerForm').submit();
+            }
+        }
+    </script>
 </body>
 </html>
